@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react';
-import tvo from '../api/tvo-recent'
+import recent from '../api/my-recent'
 
 export default ()=>{
     const [results, setResults]= useState([]);
     const [errorMessage, setErrorMessage] = useState('')
     const searchApi =async() => {
         try {
-            const response = await tvo.get('/tvo-most-recent');
+            const response = await recent.get('/my-most-recent');
             setResults(response.data)
         } catch (e) {
             setErrorMessage(e)
