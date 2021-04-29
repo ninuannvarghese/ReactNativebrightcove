@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native'
-import tvo from '../api/tvo-recent'
+import endpoint from '../api/endpoint-recent'
 import ResultsDetailElement from '../Components/ResultsDetailElement'
 
 const ResultsShowScreen = ({navigation}) => {
     const [result, setResult] = useState(null);
-    const nid = navigation.getParam('nid');
-    const getResult = async nid => {
+    const id = navigation.getParam('nid');
+    const getResult = async id => {
         //console.log(id);
-        const response = await tvo.get(`/tvo-most-recent/${nid}`)
+        const response = await endpoint.get(`/my-most-recent/${id}`)
         setResult(response.data);
     }
     useEffect(() => {
